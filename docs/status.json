@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-07-16T15:10:46.187168+00:00",
+  "source_items": 180,
+  "output_items": 178,
+  "excluded_items": [
+    {
+      "id": "56822796026121",
+      "title": "Bezpečné doručení"
+    },
+    {
+      "id": "56822800908553",
+      "title": "Přednostní vychystání objednávky"
+    }
+  ],
+  "source_sha256": "c38605dc7c117dcefd41596ab18b78e293472d82255e39e0c9d63c40085c205f"
+}
