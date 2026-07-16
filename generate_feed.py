@@ -19,6 +19,13 @@ NS = {"g": "http://base.google.com/ns/1.0"}
 MIN_EXPECTED_PRODUCTS = 50
 
 
+def normalize_brand(text: str, preserve_urls: bool = False) -> str:
+    if not preserve_urls:
+        return re.sub(r"\bLouie\b", "LOUIE", text, flags=re.I)
+    parts = re.split(r"(https?://\S+)", text)
+    return "".join(part if re.match(r"https?://", part) else re.sub(r"\bLouie\b", "LOUIE", part, flags=re.I) for part in parts)
+
+
 def download(url: str, timeout: int = 60) -> bytes:
     request = urllib.request.Request(url, headers={"User-Agent": "Louie-Mergado-Feed/1.0"})
     with urllib.request.urlopen(request, timeout=timeout) as response:
@@ -32,7 +39,7 @@ def value(item: ET.Element, name: str) -> str:
 
 def normalize_title(title: str) -> str:
     title = re.sub(r"\s*\|\s*", " | ", title.strip())
-    title = re.sub(r"\bLouie\b", "LOUIE", title, flags=re.I)
+    title = normalize_brand(title)
     title = re.sub(r"(?<=\d)\s*ks\b", " ks", title, flags=re.I)
     title = re.sub(r"(?<=\d)\s*(kg|g|ml)\b", r" \1", title, flags=re.I)
     return re.sub(r"\s+", " ", title).replace(" + ", " a ")
@@ -93,7 +100,7 @@ def optimized_title(title: str, species: str, kind: str) -> str:
 
 def optimized_description(title: str, description: str, species: str, kind: str) -> str:
     description = re.sub(r"\s+", " ", description).strip()
-    description = re.sub(r"\bLouie\b", "LOUIE", description, flags=re.I)
+    description = normalize_brand(description, preserve_urls=True)
     description = re.sub(r"(?<=\d)%(?=\D|$)", " %", description)
     description = re.sub(r"\bVlhké krmivo\b", "Krmivo", description)
     description = re.sub(r"\bvlhké krmivo\b", "krmivo", description)
