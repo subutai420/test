@@ -1,6 +1,12 @@
 name: Update Mergado feed
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - generate_feed.py
+      - .github/workflows/update-feed.yml
   schedule:
     - cron: "17 * * * *"
   workflow_dispatch:
