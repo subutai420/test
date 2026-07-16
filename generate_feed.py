@@ -32,6 +32,7 @@ def value(item: ET.Element, name: str) -> str:
 
 def normalize_title(title: str) -> str:
     title = re.sub(r"\s*\|\s*", " | ", title.strip())
+    title = re.sub(r"\bLouie\b", "LOUIE", title, flags=re.I)
     title = re.sub(r"(?<=\d)\s*ks\b", " ks", title, flags=re.I)
     title = re.sub(r"(?<=\d)\s*(kg|g|ml)\b", r" \1", title, flags=re.I)
     return re.sub(r"\s+", " ", title).replace(" + ", " a ")
@@ -92,6 +93,7 @@ def optimized_title(title: str, species: str, kind: str) -> str:
 
 def optimized_description(title: str, description: str, species: str, kind: str) -> str:
     description = re.sub(r"\s+", " ", description).strip()
+    description = re.sub(r"\bLouie\b", "LOUIE", description, flags=re.I)
     description = re.sub(r"(?<=\d)%(?=\D|$)", " %", description)
     description = re.sub(r"\bVlhké krmivo\b", "Krmivo", description)
     description = re.sub(r"\bvlhké krmivo\b", "krmivo", description)
@@ -153,7 +155,7 @@ def transform(xml_bytes: bytes) -> tuple[list[dict[str, str]], dict[str, object]
             "description": optimized_description(title, value(item, "description"), species, kind),
             "g:product_type": normalized_type,
             "g:google_product_category": category,
-            "g:brand": "Louie",
+            "g:brand": "LOUIE",
             "g:custom_label_0": species,
             "g:custom_label_1": kind,
             "g:custom_label_2": "multipack" if kind == "bundle" else "single",
