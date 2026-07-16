@@ -15,7 +15,7 @@ Po nahrání do veřejného repozitáře použijte:
 
 `https://raw.githubusercontent.com/subutai420/test/main/docs/mergado-import.csv`
 
-V Mergadu nastavte pravidlo **Import datového souboru (CSV / XML)**, přesnou shodu `ID` na vstupní `g:id` a mapování ostatních sloupců na odpovídající elementy.
+V Mergadu nastavte pravidlo **Import datového souboru (CSV / XML)** a párování `g:id` proti vstupnímu `g:id` v režimu přesné shody. CSV používá přímo názvy elementů projektu (`g:title`, `description`, `g:product_type`, `g:google_product_category`, `g:brand` a `g:custom_label_0` až `g:custom_label_4`).
 
 ## Ruční test
 

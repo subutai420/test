@@ -146,17 +146,17 @@ def transform(xml_bytes: bytes) -> tuple[list[dict[str, str]], dict[str, object]
         discount = 0 if not price or not sale_text else round((price - sale_price) / price * 100)
         normalized_type, category = taxonomy(species, kind)
         rows.append({
-            "ID": item_id,
-            "TITLE": optimized_title(title, species, kind),
-            "DESCRIPTION": optimized_description(title, value(item, "description"), species, kind),
-            "PRODUCT_TYPE": normalized_type,
-            "GOOGLE_PRODUCT_CATEGORY": category,
-            "BRAND": "Louie",
-            "CUSTOM_LABEL_0": species,
-            "CUSTOM_LABEL_1": kind,
-            "CUSTOM_LABEL_2": "multipack" if kind == "bundle" else "single",
-            "CUSTOM_LABEL_3": "under_100" if price < 100 else ("100_499" if price < 500 else "500_plus"),
-            "CUSTOM_LABEL_4": "no_discount" if discount <= 0 else ("discount_50_plus" if discount >= 50 else "discount_1_49"),
+            "g:id": item_id,
+            "g:title": optimized_title(title, species, kind),
+            "description": optimized_description(title, value(item, "description"), species, kind),
+            "g:product_type": normalized_type,
+            "g:google_product_category": category,
+            "g:brand": "Louie",
+            "g:custom_label_0": species,
+            "g:custom_label_1": kind,
+            "g:custom_label_2": "multipack" if kind == "bundle" else "single",
+            "g:custom_label_3": "under_100" if price < 100 else ("100_499" if price < 500 else "500_plus"),
+            "g:custom_label_4": "no_discount" if discount <= 0 else ("discount_50_plus" if discount >= 50 else "discount_1_49"),
         })
 
     status = {
