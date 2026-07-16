@@ -81,9 +81,9 @@ def optimized_title(title: str, species: str, kind: str) -> str:
     label = {
         "treat": f"pamlsek pro {animal}",
         "bundle": f"balíček pro {animal}",
-        "pouch": f"vlhké krmivo pro {animal}",
+        "pouch": f"kapsička pro {animal}",
         "broth": f"vývar pro {animal}",
-        "can": f"vlhké krmivo pro {animal}",
+        "can": f"konzerva pro {animal}",
     }[kind]
     if label.lower() not in title.lower() and f"pro {animal}" not in title.lower():
         title = f"{title} | {label}"
@@ -93,6 +93,8 @@ def optimized_title(title: str, species: str, kind: str) -> str:
 def optimized_description(title: str, description: str, species: str, kind: str) -> str:
     description = re.sub(r"\s+", " ", description).strip()
     description = re.sub(r"(?<=\d)%(?=\D|$)", " %", description)
+    description = re.sub(r"\bVlhké krmivo\b", "Krmivo", description)
+    description = re.sub(r"\bvlhké krmivo\b", "krmivo", description)
     animal = "kočky" if species == "cat" else "psy"
     core = re.sub(r"\s*\|.*$", "", normalize_title(title))
     core = re.sub(r"\s+\d+(?:[.,]\d+)?\s*(?:kg|g|ml)\s*$", "", core, flags=re.I).strip(" -")
@@ -101,9 +103,9 @@ def optimized_description(title: str, description: str, species: str, kind: str)
         "grooming": f"Péče pro {animal}: {core}.",
         "treat": f"Pamlsek pro {animal}: {core}.",
         "bundle": f"Balíček pro {animal}: {core}.",
-        "pouch": f"Vlhké krmivo pro {animal}: {core}.",
+        "pouch": f"Kapsička pro {animal}: {core}.",
         "broth": f"Vývar pro {animal}: {core}.",
-        "can": f"Vlhké krmivo pro {animal}: {core}.",
+        "can": f"Konzerva pro {animal}: {core}.",
     }[kind]
     if not description:
         return prefix
