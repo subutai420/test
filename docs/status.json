@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-26T19:38:35.338876+00:00",
-  "source_items": 182,
-  "output_items": 180,
+  "generated_at": "2026-07-27T11:43:54.677001+00:00",
+  "source_items": 183,
+  "output_items": 181,
   "excluded_items": [
     {
       "id": "56822796026121",
@@ -12,5 +12,5 @@
       "title": "Přednostní vychystání objednávky"
     }
   ],
-  "source_sha256": "78e137c6d273e032b43390ddd0debfb9644ff39965699e028e5873abbef7a71f"
+  "source_sha256": "97ed79300d8be711379d3bdb13a9908ff4c9af7dcc634886901dd14cac235aa4"
 }
