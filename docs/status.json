@@ -1,7 +1,16 @@
 {
-  "generated_at": "2026-10-08T16:35:24.419868+00:00",
-  "source_items": 72,
-  "output_items": 72,
-  "excluded_items": [],
-  "source_sha256": "cce73d774cb8fd0f594789b53beb5c5d25cff2a88a6e0540d636c9a937840f53"
+  "generated_at": "2026-10-09T17:01:51.831645+00:00",
+  "source_items": 80,
+  "output_items": 78,
+  "excluded_items": [
+    {
+      "id": "56822796026121",
+      "title": "Bezpečné doručení"
+    },
+    {
+      "id": "56822800908553",
+      "title": "Přednostní vychystání objednávky"
+    }
+  ],
+  "source_sha256": "6fb4018a9b6663d98920b4d68272a94835807a7a8e48e17c89b115c2171d3683"
 }
